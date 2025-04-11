@@ -160,9 +160,12 @@ pub fn build_program_with_args(path: &str, args: BuildArgs) {
 #[macro_export]
 macro_rules! include_elf {
     ($arg:tt) => {{
-        if cfg!(clippy) {
+        #[cfg(cargo_clippy)]
+        {
             &[]
-        } else {
+        }
+        #[cfg(not(cargo_clippy))]
+        {
             include_bytes!(env!(concat!("SP1_ELF_", $arg)))
         }
     }};

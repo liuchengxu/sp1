@@ -212,7 +212,7 @@ jobs:
       - name: Check include_elf! with cargo clippy
         run: |
           cd examples
-          cargo clippy --package aggregation-script
+          RUSTFLAGS="--cfg cargo_clippy" cargo clippy --package aggregation-script
         env:
           CARGO_INCREMENTAL: 1
 
