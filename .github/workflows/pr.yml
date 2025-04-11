@@ -1,8 +1,9 @@
 name: PR
 
 on:
+  workflow_dispatch:
   push:
-    branches: [main, dev]
+    branches: [main, dev, debug-fix-clippy-check-ci]
   pull_request:
     branches:
       - "**"
@@ -163,7 +164,7 @@ jobs:
 
   lint:
     name: Formatting & Clippy
-    runs-on: [runs-on, runner=16cpu-linux-x64, disk=large, "run-id=${{ github.run_id }}"]
+    runs-on: [ubuntu-latest]
     env:
       CARGO_NET_GIT_FETCH_WITH_CLI: "true"
     steps:
