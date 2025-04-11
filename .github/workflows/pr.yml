@@ -204,7 +204,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --all-features --all-targets -- -D warnings -A incomplete-features
+          args: --all-features --all-targets -- -D warnings -A incomplete-features -A unexpected_cfgs
         env:
           CARGO_INCREMENTAL: 1
 
